@@ -12,22 +12,5 @@ describe("Server - Configurations", () => {
             });
     });
 
-    it("Should have message Hello world in andpoint post", async () => {
-        await supertest(server).post("/tutorial/hello")
-            .expect(200)
-            .then((response) => {
-                expect(response.body.message).toBe('Hello World!');
-            });
-    });
-
-    it("Should have message Hello world in andpoint get", async () => {
-        await supertest(server).get("/tutorial/hello")
-            .expect(200)
-            .then((response) => {
-                expect(response.body.message).toBe('Hello World!');
-            });
-    });
-
-
 });
 
