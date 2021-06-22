@@ -8,14 +8,6 @@
     "resolveJsonModule": true,
 
     "baseUrl": "src", // This must be specified if "paths" is.
-    "paths": {
-      "@app/*": [
-        "./*"
-      ],
-      "@config/*": [
-        "./config/*"
-      ],
-    },
     "skipLibCheck": true, /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   }
