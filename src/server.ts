@@ -1,8 +1,7 @@
 import express from 'express';
-import env from './config/environments'
+import env from '@config/environments'
 
 const { host } = env
-
 const app = express();
 
 app.listen(host.port, () => {
