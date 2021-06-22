@@ -1,6 +1,7 @@
-import server from "../server";
-
+import server from "server";
 import supertest from "supertest";
+
+jest.useFakeTimers();
 
 describe("Server - Configurations", () => {
 

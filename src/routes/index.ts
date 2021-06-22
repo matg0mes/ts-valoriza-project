@@ -3,7 +3,7 @@ import { Router } from "express";
 import { Route } from "./types";
 import { includeRoutePrefix } from "./includeRoutePrefix";
 
-import tutorial from "../endpoints/TutorialEndpoint";
+import tutorial from "endpoints/TutorialEndpoint";
 const router = Router();
 
 export const routes: Route[] = [...includeRoutePrefix(tutorial)];

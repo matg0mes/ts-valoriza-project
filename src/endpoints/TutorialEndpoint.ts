@@ -1,5 +1,5 @@
-import { Route } from "../routes/types";
-import { TutorialController } from "../controllers/TutorialController";
+import { Route } from "routes/types";
+import { TutorialController } from "controllers/TutorialController";
 
 const prefixRoute = "/tutorial";
 const tutorialController = new TutorialController();
