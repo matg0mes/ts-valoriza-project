@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "cross-env EXPRESS_APP_STAGE=development jest",
+    "run:dev": "cross-env EXPRESS_APP_STAGE=development tsnd -r tsconfig-paths/register src/server.ts",
     "typeorm": "tsnd ./node_modules/typeorm/cli.js",
     "migration:run": "tsnd ./node_modules/typeorm/cli.js migration:run",
     "migration:revert": "tsnd ./node_modules/typeorm/cli.js migration:revert",
-    "dev": "cross-env EXPRESS_APP_STAGE=development tsnd -r tsconfig-paths/register src/server.ts",
-    "test": "cross-env EXPRESS_APP_STAGE=development jest"
+    "entity:create": "tsnd ./node_modules/typeorm/cli.js entity:create -n"
   },
   "keywords": [],
   "author": "",

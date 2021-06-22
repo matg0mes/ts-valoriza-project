@@ -8,5 +8,10 @@
             "database": "${workspaceFolder:valoriza-project}/src/database/database.sqlite"
         }
     ],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+
+    "material-icon-theme.folders.associations": {
+        "entities": "Model",
+        "endpoints": "Sublime",
+    }
 }
