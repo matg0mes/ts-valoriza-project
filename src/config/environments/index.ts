@@ -6,5 +6,4 @@ const ENV = {
 };
 
 const environmentTarget: IEnvironment = ENV[process.env.EXPRESS_APP_STAGE] || development;
-
 export default environmentTarget
