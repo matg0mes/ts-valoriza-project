@@ -1,16 +1,15 @@
-import server from "server";
+import app from "app";
 import supertest from "supertest";
 
-jest.useFakeTimers();
+const request = supertest(app)
 
-describe("Server - Configurations", () => {
+describe("Server", () => {
 
     it("Should give 404 for paths that don't exist", async () => {
-        await supertest(server).get("/fakeEndpoint")
-            .expect(404)
-            .then((response) => {
-                expect(response.body.message).toBe('RESOURCE_NOT_FOUND');
-            });
+        const response = await request.get("/fakeEndpoint")
+
+        expect(response.status).toBe(404)
+        expect(response.body.message).toBe('RESOURCE_NOT_FOUND')
     });
 
 });

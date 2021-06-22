@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env EXPRESS_APP_STAGE=development jest",
-    "run:dev": "cross-env EXPRESS_APP_STAGE=development tsnd -r tsconfig-paths/register src/server.ts",
+    "run:dev": "cross-env EXPRESS_APP_STAGE=development tsnd -r tsconfig-paths/register src",
     "typeorm": "tsnd ./node_modules/typeorm/cli.js",
     "migration:run": "tsnd ./node_modules/typeorm/cli.js migration:run",
     "migration:revert": "tsnd ./node_modules/typeorm/cli.js migration:revert",
