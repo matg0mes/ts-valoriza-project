@@ -2,9 +2,9 @@ import 'reflect-metadata';
 import './database'
 
 import express from 'express';
-import { router } from './routes'
+import { router } from 'routes'
 
-import env from './config/environments'
+import env from 'config/environments'
 const { host } = env
 
 const app = express();
