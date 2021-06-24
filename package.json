@@ -9,6 +9,7 @@
     "typeorm": "tsnd ./node_modules/typeorm/cli.js",
     "migration:run": "tsnd ./node_modules/typeorm/cli.js migration:run",
     "migration:revert": "tsnd ./node_modules/typeorm/cli.js migration:revert",
+    "migration:create": "tsnd ./node_modules/typeorm/cli.js migration:create -n",
     "entity:create": "tsnd ./node_modules/typeorm/cli.js entity:create -n"
   },
   "keywords": [],
