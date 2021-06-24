@@ -10,7 +10,8 @@ jest.useFakeTimers();
 const mockUser = {
     name: "matheus gomes",
     email: "test@test.com",
-    admin: true
+    admin: true,
+    password: "12345631"
 }
 
 const request = supertest(server);
