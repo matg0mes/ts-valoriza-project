@@ -3,10 +3,12 @@ import { Router } from "express";
 import { Route } from "./types";
 import { includeRoutePrefix } from "./includeRoutePrefix";
 
+import tag from "endpoints/TagEndpoint";
 import user from "endpoints/UserEndpoint";
+
 const router = Router();
 
-export const routes: Route[] = [...includeRoutePrefix(user)];
+export const routes: Route[] = [...includeRoutePrefix(user), ...includeRoutePrefix(tag)];
 
 for (const route of routes) {
   const { path, method, action } = route;
