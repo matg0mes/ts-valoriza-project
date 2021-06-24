@@ -10,6 +10,7 @@ const routes: Route[] = [
     path: "/",
     description: "create a taf",
     action: createTagController.handle,
+    middlewares: ["admin"]
   },
 ];
 
