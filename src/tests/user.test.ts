@@ -29,6 +29,16 @@ describe("Users", () => {
         expect(response.body.email).toBe(mockUser.email);
     });
 
+    it("Should be authenticate a user", async () => {
+        const response = await request.post("/users/session").send({
+            email: mockUser.email,
+            password: mockUser.password,
+        });
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body.token).not.toBe(undefined);
+    });
+
     it("Should be error to exists user", async () => {
         const response = await request.post("/users").send(mockUser);
 
@@ -41,6 +51,16 @@ describe("Users", () => {
 
         expect(response.statusCode).toBe(400);
         expect(response.body.error).toBe('Email incorrect')
+    });
+
+    it("Should be error to email/password is invalid", async () => {
+        const response = await request.post("/users/session").send({
+            email: mockUser.email,
+            password: "PasswordInvalid",
+        });
+
+        expect(response.statusCode).toBe(400);
+        expect(response.body.error).toBe('Email/Password incorrect')
     });
 
     afterAll(async () => {
