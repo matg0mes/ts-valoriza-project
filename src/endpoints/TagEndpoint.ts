@@ -8,7 +8,7 @@ const routes: Route[] = [
   {
     method: "post",
     path: "/",
-    description: "create a taf",
+    description: "create a tag",
     action: createTagController.handle,
     middlewares: ["admin"]
   },

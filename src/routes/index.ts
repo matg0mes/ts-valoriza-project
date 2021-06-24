@@ -5,12 +5,17 @@ import { includeRoutePrefix } from "./includeRoutePrefix";
 
 import tag from "endpoints/TagEndpoint";
 import user from "endpoints/UserEndpoint";
+import compliments from "endpoints/ComplimentsEndpoint";
 
 import middlewaresAvailable from "middlewares";
 
 const router = Router();
 
-export const routes: Route[] = [...includeRoutePrefix(user), ...includeRoutePrefix(tag)];
+export const routes: Route[] = [
+  ...includeRoutePrefix(user),
+  ...includeRoutePrefix(tag),
+  ...includeRoutePrefix(compliments)
+];
 
 for (const route of routes) {
   const { path, method, middlewares, action } = route;
