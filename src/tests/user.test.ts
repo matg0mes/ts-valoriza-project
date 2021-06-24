@@ -2,7 +2,7 @@ import server from "app";
 import supertest from "supertest";
 import { createConnection, getConnection } from 'typeorm';
 
-import { UsersRepositories } from "repositories/UserRepository";
+import { UserRepository } from "repositories/UserRepository";
 import { getCustomRepository } from "typeorm";
 
 jest.useFakeTimers();
@@ -32,19 +32,19 @@ describe("Users", () => {
         const response = await request.post("/users").send(mockUser);
 
         expect(response.statusCode).toBe(400);
-        expect(response.body.message).toBe('User already exists')
+        expect(response.body.error).toBe('User already exists')
     });
 
     it("Should be error to email undefined", async () => {
-        const response = await request.post("/users").send({...mockUser, email: undefined});
+        const response = await request.post("/users").send({ ...mockUser, email: undefined });
 
         expect(response.statusCode).toBe(400);
-        expect(response.body.message).toBe('Email incorrect')
+        expect(response.body.error).toBe('Email incorrect')
     });
 
     afterAll(async () => {
-        const UserRepository = getCustomRepository(UsersRepositories);
-        await UserRepository.delete({ email: mockUser.email });
+        const userRepository = getCustomRepository(UserRepository);
+        await userRepository.delete({ email: mockUser.email });
         await getConnection().close();
     })
 });
