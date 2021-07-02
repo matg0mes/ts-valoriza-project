@@ -31,6 +31,13 @@ let mockTag = {
     name: "Test Unit In Compliments",
 }
 
+let mockCompliments = {
+    tag_id: undefined,
+    user_receiver: undefined,
+    user_sender: undefined,
+    message: undefined
+}
+
 const request = supertest(server);
 
 let tagRepository: TagRepository;
@@ -49,29 +56,31 @@ describe("Compliments", () => {
         mockTag = tagRepository.create(mockTag);
         mockUserSender = userRepository.create(mockUserSender);
         mockUserReceiver = userRepository.create(mockUserReceiver);
+        mockCompliments = complimentsRepository.create({
+            tag_id: "820f5a7a-6ede-4efb-a4cd-bcd69b5651b9",
+            user_receiver: mockUserReceiver.id,
+            user_sender: mockUserSender.id,
+            message: "Teste teste"
+        })
 
         await tagRepository.save(mockTag);
         await userRepository.save(mockUserSender);
         await userRepository.save(mockUserReceiver);
+        await complimentsRepository.save(mockCompliments)
     })
 
     it("Should be create a compliments", async () => {
-        const response = await request.post("/compliments").send({
-            tag_id: mockTag.id,
-            user_receiver: mockUserReceiver.id,
-            user_sender: mockUserSender.id,
-            message: "Teste teste"
-        });
+        const response = await request.post("/compliments").send(mockCompliments);
 
         expect(response.statusCode).toBe(201);
-        expect(response.body.message).toBe("Teste teste");
+        expect(response.body.message).toBe(mockCompliments.message);
     });
 
     afterAll(async () => {
-        await tagRepository.delete({ name: mockTag.id });
-        await userRepository.delete({ name: mockUserSender.id });
-        await userRepository.delete({ name: mockUserReceiver.id });
         await complimentsRepository.delete({ message: "Teste teste" });
+        await tagRepository.delete({ id: mockTag.id });
+        await userRepository.delete({ id: mockUserSender.id });
+        await userRepository.delete({ id: mockUserReceiver.id });
 
         await getConnection().close();
     })
