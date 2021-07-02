@@ -76,6 +76,26 @@ describe("Compliments", () => {
         expect(response.body.message).toBe(mockCompliments.message);
     });
 
+    it("Should be give a error user_receiver equals user_sender", async () => {
+        const response = await request.post("/compliments").send({
+            ...mockCompliments,
+            user_receiver: mockCompliments.user_sender
+        });
+
+        expect(response.statusCode).toBe(400);
+        expect(response.body.error).toBe("Incorrect user receiver");
+    });
+
+    it("Should be give a error when user_receiver not exists", async () => {
+        const response = await request.post("/compliments").send({
+            ...mockCompliments,
+            user_receiver: "123"
+        });
+
+        expect(response.statusCode).toBe(400);
+        expect(response.body.error).toBe("User receiver does not exists!");
+    });
+
     afterAll(async () => {
         await complimentsRepository.delete({ message: "Teste teste" });
         await tagRepository.delete({ id: mockTag.id });
